@@ -5,16 +5,21 @@ MeCabで利用できる、筑波大学の独自語を自然言語解析辞書に
 
 ## Build
 
-構築済み辞書ファイルはbuildディレクトリ内に同梱されています。
+構築済み辞書ファイルはbuildディレクトリ内に同梱されています。masterブランチへのコミットは自動ビルドで常に最新版に取り込まれています。
 
 手動ビルドは以下の方法で行えます（Mac OS Xの場合）。
 
 ```shell
 # 
-# MeCab導入により /usr/local/libexec/mecab/mecab-dict-indexが利用可能になっている必要があります。
+# MeCab導入により mecab-dict-indexが利用可能になっている必要があります。
+# -d オプションの引数はシステム辞書へのパスです。
 # 
 
-./build.sh
+/usr/lib/mecab/mecab-dict-index \
+-d /usr/share/mecab/dic/ipadic \
+-u build/itfdic.dic \
+-f utf-8 \
+-t utf-8 src/itfdic.csv
 ```
 
 他環境でのビルドコードの提供もお待ちしています。
