@@ -1,4 +1,4 @@
-# ITF-Dic [![CircleCI](https://circleci.com/gh/nandenjin/itfdic.svg?style=svg)](https://circleci.com/gh/nandenjin/itfdic)
+# ITF-Dic [![CircleCI](https://circleci.com/gh/nandenjin/itfdic.svg?style=shield)](https://circleci.com/gh/nandenjin/itfdic)
 ## 筑波大学生 自然言語解析辞書
 
 MeCabで利用できる、筑波大学の独自語を自然言語解析辞書にまとめたものです。
