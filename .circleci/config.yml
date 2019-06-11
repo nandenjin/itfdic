@@ -20,6 +20,8 @@ jobs:
     docker:
     - image: ubuntu:18.04
     steps:
+      - run: apt-get update
+      - run: apt-get install -y ca-certificates
       - checkout
       - attach_workspace:
           at: ./build
