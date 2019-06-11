@@ -21,7 +21,7 @@ jobs:
     - image: ubuntu:18.04
     steps:
       - run: apt-get update
-      - run: apt-get install -y ca-certificates
+      - run: apt-get install -y ca-certificates git
       - checkout
       - attach_workspace:
           at: ./build
@@ -29,6 +29,7 @@ jobs:
       - run: git config user.name $GITHUB_NAME
       - run: git add build/itfdic.dic
       - run: git commit -m "Build by CircleCI [skip ci]"
+      - run: git tag $(date "+%Y%m%d-%H:%M:%S")
       - run: git push
 workflows:
   version: 2
