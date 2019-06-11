@@ -8,7 +8,10 @@ jobs:
       - run: apt-get install -y python3 python3-pip git curl wget make xz-utils file sudo unzip
       - run: apt-get install -y mecab libmecab-dev mecab-ipadic-utf8
       - checkout
-      - run: ./build.sh
+      - run: "/usr/local/libexec/mecab/mecab-dict-index -d /usr/local/lib/mecab/dic/ipadic \
+        -u build/itfdic.dic \
+        -f utf-8 \
+        -t utf-8 src/itfdic.csv"
 workflows:
   version: 2
   build:
