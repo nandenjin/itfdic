@@ -3,8 +3,8 @@ jobs:
   build:
     docker: ubuntu:18.04
     steps:
-      - apt-get update
-      - apt-get install -y python3 python3-pip git curl wget make xz-utils file sudo unzip
+      - run: apt-get update
+      - run: apt-get install -y python3 python3-pip git curl wget make xz-utils file sudo unzip
       - checkout
       - run: ./build.sh
 workflows:
