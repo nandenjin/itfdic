@@ -12,8 +12,30 @@ jobs:
         -u build/itfdic.dic \
         -f utf-8 \
         -t utf-8 src/itfdic.csv"
+      - persist_to_workspace:
+          root: ./build
+          paths:
+          - itfdic.dic
+  deploy:
+    docker:
+    - image: ubuntu:18.04
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./build
+      - run: git config user.email $GITHUB_EMAIL
+      - run: git config user.name $GITHUB_NAME
+      - run: git add build/itfdic.dic
+      - run: git commit -m "Build by CircleCI [skip ci]"
+      - run: git push
 workflows:
   version: 2
-  build:
+  build-deploy:
     jobs:
     - build
+    - deploy:
+        requires:
+          - build
+        filters:
+          branches:
+            only: master
