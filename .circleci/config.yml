@@ -29,8 +29,8 @@ jobs:
       - run: git config user.name $GITHUB_NAME
       - run: git add build/itfdic.dic
       - run: git commit -m "Build by CircleCI [skip ci]"
-      - run: git tag $(date "+%Y%m%d-%H:%M:%S")
-      - run: git push
+      - run: git describe | sed -e "s/-.*//" -e "s/v//" | (read ver && git tag v$((ver+1)))
+      - run: git push --tags
 workflows:
   version: 2
   build-deploy:
